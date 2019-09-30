@@ -168,6 +168,8 @@ items:
             - env:
                 - name: JAVA_OPTS
                   value: -Xss256K -Xms16M -Xmx32M
+                - name: server_port
+                  value: "8080"
               image: date-service:latest
               imagePullPolicy: Always
               name: date-service

@@ -55,4 +55,13 @@
 		</plugins>
 	</build>
 
+	<profiles>
+		<profile>
+			<id>openshift</id>
+			<build>
+				<finalName>application</finalName>
+			</build>
+		</profile>
+	</profiles>
+
 </project>
