@@ -43,7 +43,7 @@ items:
           COPY --from=builder /app/target/application.jar /
           ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/application.jar"]
         git:
-          ref: master
+          ref: istio
           uri: https://github.com/in-the-keyhole/date-service.git
         type: Git
       strategy:
