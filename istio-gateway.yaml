@@ -1,0 +1,36 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: experimental-gateway
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: date-service
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - experimental-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /datetime/api/v1
+    - uri: 
+    rewrite:
+      uri: "/api/v1" 
+    route:
+    - destination:
+        host: date-service
+        port:
+          number: 8080
